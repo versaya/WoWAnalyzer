@@ -51,6 +51,7 @@ class Cooldown extends React.Component {
     };
     this.handleExpandClick = this.handleExpandClick.bind(this);
     this.handleShowHealsClick = this.handleShowHealsClick.bind(this);
+    this.handleShowLess = this.handleShowLess.bind(this);
   }
 
   handleExpandClick() {
@@ -62,6 +63,17 @@ class Cooldown extends React.Component {
     this.setState({
       showHeals: true,
     });
+  }
+  handleShowLess() {
+    if (this.state.showHeals) {
+      this.setState({
+        showHeals: false,
+      });
+    } else {
+      this.setState({
+        expanded: false,
+      });
+    }
   }
 
   groupHeals(events) {
@@ -142,7 +154,7 @@ class Cooldown extends React.Component {
                     </div>
                   </div>
                 ))}
-                <a href="javascript:" onClick={this.handleShowHealsClick} style={{ marginTop: '.2em' }}>Even more</a>
+                <a href="javascript:" onClick={this.handleShowHealsClick} style={{ marginTop: '.2em' }}>Even more</a>  /  <a href="javascript:" onClick={this.handleShowLess} style={{ marginTop: '.2em' }}>Less</a>
               </div>
             )}
             {this.state.expanded && this.state.showHeals && (
@@ -163,6 +175,7 @@ class Cooldown extends React.Component {
                     </div>
                   </div>
                 ))}
+                <a href="javascript:" onClick={this.handleShowLess} style={{ marginTop: '.2em' }}>Less</a>
               </div>
             )}
           </div>
